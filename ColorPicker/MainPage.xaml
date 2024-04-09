@@ -4,50 +4,77 @@
              x:Class="ColorPicker.MainPage">
 
     <ContentPage.Resources>
-        <Color x:Key="Primary">#ab3527</Color>
-        <Color x:Key="Secondary">#775752</Color>
-        <Color x:Key="Info">#705c2e</Color>
+        
+        <Color x:Key="RedThumb">#fe0000</Color>
+        <Color x:Key="MaxRed">#820300</Color>
+        <Color x:Key="MinRed">#b80000</Color>
+
+        <Color x:Key="BlueThumb">#1d24ca</Color>
+        <Color x:Key="MaxBlue">#008dda</Color>
+        <Color x:Key="MinBlue">#333a73</Color>
+
+        <Color x:Key="GreenThumb">#416d19</Color>
+        <Color x:Key="MaxGreen">#9bcf52</Color>
+        <Color x:Key="MinGreen">#bfea7c</Color>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontFamily" Value="Arial" />
+        </Style>
     </ContentPage.Resources>
 
     <Grid x:Name="Container" BackgroundColor="GhostWhite">
         <Frame Margin="10,0,10,0" VerticalOptions="Center">
             <VerticalStackLayout Spacing="15" VerticalOptions="Center">
-                <Label FontAttributes="Bold"
-                       FontSize="Large"
-                       HorizontalTextAlignment="Center"
-                       Text="ColorPicker" />
-                <Label Text="Red Value:" />
-                <Slider x:Name="sldRed"
-                        ThumbColor="{StaticResource Primary}"
-                        MaximumTrackColor="{StaticResource Info}"
-                        MinimumTrackColor="{StaticResource Secondary}"
-                        ValueChanged="Slider_ValueChanged"/>
-                <Label Text="Green Value:" />
-                <Slider x:Name="sldGreen"
-                        ThumbColor="{StaticResource Primary}"
-                        MaximumTrackColor="{StaticResource Info}"
-                        MinimumTrackColor="{StaticResource Secondary}"
-                        ValueChanged="Slider_ValueChanged"/>
-                <Label Text="Blue Value:" />
-                <Slider x:Name="sldBlue"
-                        ThumbColor="{StaticResource Primary}"
-                        MaximumTrackColor="{StaticResource Info}"
-                        MinimumTrackColor="{StaticResource Secondary}"
-                        ValueChanged="Slider_ValueChanged"/>
-                <Frame CornerRadius="25" HorizontalOptions="Center">
+                <Frame
+                       x:Name="frameTitle"
+                       CornerRadius="25" HorizontalOptions="Center"
+                       BorderColor="LightGray"
+                       BackgroundColor="GhostWhite"
+                       >
                     <HorizontalStackLayout>
                         <Label x:Name="labelHex"
-                               HorizontalTextAlignment="End"
+                               Style="{StaticResource LabelStyle}"
                                VerticalOptions="Center"
-                               Text="HEX Color: #00000"/>
-                        <ImageButton Margin="10,0,0,0"
-                             HeightRequest="25"
-                             Source="copy.svg"
-                             VerticalOptions="Center"
-                             WidthRequest="25"
-                             Clicked="ImageButton_Clicked"/>
+                               Text="ColorPicker🖍"
+                               FontSize="Large"/>
                     </HorizontalStackLayout>
                 </Frame>
+                <Label x:Name="labelRed"
+                       Text="Red Value:"
+                       Style="{StaticResource LabelStyle}"/>
+                <Slider x:Name="sldRed"
+                        ThumbColor="{StaticResource RedThumb}"
+                        MaximumTrackColor="{StaticResource MaxRed}"
+                        MinimumTrackColor="{StaticResource MinRed}"
+                        ValueChanged="Slider_ValueChanged"/>
+                <Label x:Name="labelGreen"
+                       Text="Green Value:"
+                       Style="{StaticResource LabelStyle}"/>
+                <Slider x:Name="sldGreen"
+                        ThumbColor="{StaticResource GreenThumb}"
+                        MaximumTrackColor="{StaticResource MaxGreen}"
+                        MinimumTrackColor="{StaticResource MinGreen}"
+                        ValueChanged="Slider_ValueChanged"/>
+                <Label x:Name="labelBlue"
+                       Text="Blue Value:"
+                       Style="{StaticResource LabelStyle}"/>
+                <Slider x:Name="sldBlue"
+                        ThumbColor="{StaticResource BlueThumb}"
+                        MaximumTrackColor="{StaticResource MaxBlue}"
+                        MinimumTrackColor="{StaticResource MinBlue}"
+                        ValueChanged="Slider_ValueChanged"/>
+                <Frame x:Name="frameBorder"
+                       CornerRadius="25" HorizontalOptions="Center"
+                       BorderColor="GhostWhite"
+                       >
+                </Frame>
+                <Button x:Name="hexColor"
+                        BackgroundColor="GhostWhite"
+                        BorderColor="LightGray"
+                        BorderWidth="2"
+                        TextColor="Black"
+                        Clicked="btnRandom_Clicked"
+                        Text="NO HEX CREATED"/>
                 <Button x:Name="btnRandom"
                         BackgroundColor="{StaticResource Primary}"
                         Clicked="btnRandom_Clicked"
@@ -56,5 +83,4 @@
         </Frame>
     </Grid>
 
-</ContentPage> 
-
+</ContentPage>

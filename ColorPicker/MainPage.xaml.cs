@@ -22,7 +22,6 @@ public partial class MainPage : ContentPage
             var blue = sldBlue.Value;
 
             Color color = Color.FromRgb(red, green, blue);
-
             SetColor(color);
         }
     }
@@ -33,8 +32,10 @@ public partial class MainPage : ContentPage
 		btnRandom.BackgroundColor = color;
 		Container.BackgroundColor = color;
 
-		hexValue = color.ToHex();
-		labelHex.Text = hexValue;
+		frameTitle.BorderColor = color;
+        hexColor.BorderColor = color;
+        hexValue = color.ToHex();
+        hexColor.Text = $"HEX Color: {hexValue}";
     }
 
     void btnRandom_Clicked(System.Object sender, System.EventArgs e)
